@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:focus {
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important
+  }
+
+body{
+  background-color: #fbfbfb;
+}
