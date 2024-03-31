@@ -24,17 +24,17 @@ const store=useApiStore();
 </script>
 
 <template>
-<div class="py-8">
-    <p class="font-poppins font-normal text-center py-4">{{ date }}</p>
+<v-container class="py-8">
+    <p class=" text-center py-4">{{ date }}</p>
     <SearchBar :searchTerm="store.searchTerm" :places="store.places"/>
-    <div class="flex flex-row flex-wrap gap-2 max-md:flex-col w-1/2 max-md:w-[90%] mx-auto ">
-        <div v-for="(place,index) in store.places" class=" rounded-lg mb-2 w-[48%] max-md:w-[100%] flex max-sm:flex-col  relative ">
+    <v-row class="d-flex flex-row flex-wrap gap-2 max-md:flex-col w-1/2 max-md:w-[90%] mx-auto ">
+        <div v-for="(place,index) in store.places" class=" rounded-lg mb-2 w-[48%] max-md:w-[100%] d-flex max-sm:flex-col  relative ">
             <WhaeatherCard :place="place" :key="index" :index="index"/>
         </div>
 
-    </div>
+    </v-row>
    
-</div>
+</v-container>
 </template>
 
 <style scoped>

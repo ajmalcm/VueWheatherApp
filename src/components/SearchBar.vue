@@ -10,16 +10,27 @@ const store=useApiStore()
 </script>
 
 <template>
-    <div class="flex justify-center items-center flex-col relative mb-3">
-        <div class="flex items-center rounded-lg w-[50%] max-md:w-[90%] bg-white shadow-lg">
+    <v-container class="d-flex justify-center align-center flex-column relative mb-3">
+        <v-card class="d-flex align-center rounded-lg w-[50%] max-md:w-[90%] bg-white " elevation="5">
             <i class="fa-solid fa-magnifying-glass px-2 text-gray-500" ></i>
-            <input type="text" v-model="props.searchTerm.query"  class="flex-1 border-none outline-none rounded-lg " placeholder="search here" @input="store.searchHandler()"/>
-        </div>
+            <v-text-field v-model="props.searchTerm.query" dense solo outlined hide-details  class="rounded-lg " placeholder="search for a place" @input="store.searchHandler()"></v-text-field>
+        </v-card>
 
-        <div v-if="props.searchTerm.result" class="w-[50%] max-md:w-[90%] border-[1px] rounded-lg bg-white absolute top-12 z-50 shadow-md">
-            <div v-for="(place,index) in props.searchTerm.result" class=" flex flex-col gap-2">
-                <p @click="store.onPlaceHandler(place.id)" class="px-2 py-1 border-b-[1px] cursor-pointer hover:scale-[1.01] transition-all font-poppins font-light text-sm" :key="place.id">{{place.name}}, {{place.region}}, {{ place.country }}</p>
-            </div>
-        </div>
-    </div>
+        <v-card v-if="props.searchTerm.result" class="w-[50%] max-md:w-[90%] border-primary rounded-lg bg-white absolute" :style="{ top: '3px', zIndex: '50' }" elevation="7">
+            <v-paper v-for="(place,index) in props.searchTerm.result" class=" d-flex flex-column gap-2">
+                <p @click="store.onPlaceHandler(place.id)" class="px-2 trans text-overline font-weight-thin " :key="place.id">{{place.name}}, {{place.region}}, {{ place.country }}</p>
+            </v-paper>
+        </v-card>
+    </v-container>
 </template>
+
+<style scoped>
+
+.trans{
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+.trans:hover{
+    transform: scale(1.01);
+}
+</style>

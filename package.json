@@ -12,7 +12,8 @@
     "axios": "^1.6.8",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vuetify": "^3.5.13"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
