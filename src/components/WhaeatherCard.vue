@@ -24,7 +24,7 @@ const closeMore=()=>{
 
 <template>
     <v-container :class="place.current.is_day === 1 ? 'bg-day' : 'bg-night'"
-      class="d-flex flex-column p-4 py-5 w-full max-sm:w-[100%]  rounded-lg flex-wrap font-poppins text-white"
+      class="d-flex flex-column px-4 py-5 rounded-lg flex-wrap font-poppins text-white"
     >
       <div class="d-flex justify-space-between align-center">
         <div class="d-flex gap-1 align-center text-sm">
@@ -67,13 +67,13 @@ const closeMore=()=>{
     </v-container>
 
     <Transition name="fade">
-      <v-container class="font-poppins bg-white absolute bottom-0 opacity-95 rounded-md fl gap-3 align-center justify-center p-2 ani w-full max-sm:w-[100%]" v-show="more">
+      <v-container class="font-poppins bg-white opacity-95 rounded-md fl gap-3 align-center justify-center p-2 ani" v-show="more" style="position: absolute;bottom: 0;">
           <i class="fa-solid fa-xmark align-self-end" @click="closeMore"></i>
           <div class="d-flex flex-column gap-2 w-full">
               <div class="d-flex align-center gap-3 w-full justify-space-between">
                 <div class="d-flex flex-column align-center gap-1">
                     <i class="fa-solid fa-wind text-subtitle"></i>
-                    <p class="text-sm">{{ place.current.wind_kph }} km/h</p>
+                    <p class="text-sm">{{ place.current.wind_kph }} km/h</p> 
                     <p class="text-xs">wind</p>
                 </div>
         
@@ -83,7 +83,7 @@ const closeMore=()=>{
                     <p class="text-xs">humidity</p>
                 </div>
         
-                <div class="d-flex flex-col align-center gap-1">
+                <div class="d-flex flex-column align-center gap-1">
                     <i class="fa-solid fa-umbrella text-sm"></i>
                     <p class="text-sm">{{ place.current.precip_mm }} mm</p>
                     <p class="text-xs">precipitation</p>
@@ -122,6 +122,10 @@ const closeMore=()=>{
 </template>
 
 <style scoped>
+.opacity-95{
+  opacity: 0.95;
+}
+
 .fade-enter-active,
 .fade-leave-active{
 transition: opacity 0.5s ease;;
@@ -154,4 +158,26 @@ font-size: 12px;
 font-size:10px;
 font-weight: 300;
 }
+.w-full{
+  width:100%;
+}
+
+.gap-1{
+  gap:4px;
+}
+
+.gap-2{
+  gap:8px;
+}
+
+.gap-3{
+  gap:12px;
+}
+
+@media screen and (max-width: 640px) {
+    .containerWidth{
+        width: 100%;
+    }
+}
+
 </style>
